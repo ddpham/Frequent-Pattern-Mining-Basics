@@ -1,22 +1,22 @@
 ---
-title: "Frequent Pattern Mining"
-author: "Duc Pham"
-date: "June 7, 2016"
+Title: "Frequent Pattern Mining"
+Author: "Duc Pham"
+Date: "June 7, 2016"
 ---
 
-# Giới thiệu
+# 1.Giới thiệu
 
 Frequent Pattern Mining (FPM) là khái niệm được dùng trong việc phân tích các hành vi lặp đi lặp lại giữa các yêu tố có liên hệ với nhau. FPM được sử dụng đặc biệt rộng rãi trong các ngành như ecommerce, banking, retail... giúp người bán có thể phân tích hành vi mua sắm của khách hàng. Một số phương pháp được ứng dụng nhiều trong phân tích FPM như:
 
 - Phương pháp Apriori
 - Phương pháp Eclat (định dạng dữ liệu dọc - vertical data format)
 
-# Lý thuyết chung
-## Các khái niệm cơ bản
-### Market basket analysis (phân tích giỏ hàng)
+# 2.Lý thuyết chung
+## 2.1.Các khái niệm cơ bản
+### 2.1.1.Market basket analysis (phân tích giỏ hàng)
 Ví dụ bạn là chủ của một của hàng tạp hóa, bạn sẽ muốn biết được một khách hàng (KH) khi đến của hàng của mình sẽ mua những món đồ gì. Để làm được điều này, bạn cần nhìn vào dữ liệu về các giao dịch của KH, qua đó sẽ thấy được tần suất xuất hiện của các món đồ KH đã mua và những món đồ nào thường được KH mua trong cùng một lần mua sắm. Ví dụ, KH thường mua bia lon và đồ nhậu mỗi lần đến mua sắm tại của hàng tạp hóa của bạn, điều này thể hiện 2 đồ vật này đã tạo ra mối quan hệ (association rule) và mối quan hệ này có thể hỗ trợ bạn trong việc tiên đoán hành vi mua sắm tiếp theo của KH khi mua hàng.
 
-### Support và confidence
+### 2.1.2.Support và confidence
 Giá dụ việc KH mua bia lon và đồ nhậu tại cửa hàng của bạn (dựa vào dữ liệu về giao dịch của KH) có xác suất là 2% tổng số giao dịch và cơ hội để KH mua thêm đồ nhậu khi đã mua bia là 80% vậy thì hàng vi mua sắm bia lon và đồ nhậu được miêu tả như sau:
 Bia lon => đồ nhậu[support = 2%, confidence = 80%]
 
@@ -25,7 +25,7 @@ Bia lon => đồ nhậu[support = 2%, confidence = 80%]
 - Mức support tối thiểu (minimum support threshold): tần suất thấp nhất của hành vi để thỏa mãn được sự quan tâm của người phân tích
 - Mức Confidence tối thiểu (minimum confidence threshold): mức thấp nhất của cơ hội mua sắm để thỏa mãn được sự quan tâm của người phân tích
 
-### Các khái niệm khác
+### 2.1.3.Các khái niệm khác
 Gọi I = {I1, I2,...,Im} là tập các đồ vật; D là dữ liệu giao dịch trong đó từng giao dịch T là giao dịch có các đồ vật thuộc tập I ($T \subseteq I$). A là tập các đồ vật, và $A \subseteq T$, ta có:
 
 * $A \Rightarrow B$ khi mà $A \subseteq I$ và $B \subseteq I$, $A \neq \phi$, $B \neq \phi$, $A \cap B = \phi$
@@ -60,8 +60,8 @@ T700          |  I1, I3
 T800          |  I1, I2, I3, I5
 T900          |  I1, I2, I3
 
-## Phương pháp Apriori:
-### Các khái niệm cơ bản của Apriori
+## 2.2.Phương pháp Apriori:
+### 2.2.1.Các khái niệm cơ bản của Apriori
 
 * Mệnh đề của Apriori: _Tất cả các tập con không rỗng của một giao dịch phổ biến phải là phổ biến_
 
@@ -73,7 +73,7 @@ Phương pháp Apriori được thực thiện qua 2 bước: 1) xát nhập (jo
 
 * Sàng lọc: mục đích của bước sàng lọc là để lọc ra những giao dịch chứa k đồ vật thật sự phổ biến. Trong bược xát nhập, chúng ta đã có một danh sách dài các giao dịch chứa k đồ vật, công việc tiếp theo là đọc lại toàn bộ dữ liệu D về giao dịch để kiểm tra các giao dịch nào là phổ biến. Tuy nhiên, nếu thực hiện công việc như vậy thì sẽ tốn rất nhiều công sức. Do đó, chúng ta sử dụng mệnh đề của Apriori cho bước sàng lọc. Có nghĩa là trong các giao dịch chứa k-1 đồ vật mà không phải phổ biến, chúng ta sẽ loại bỏ toàn bộ các giao dịch chưa k đồ vật mà chứa toàn bộ k-1 đồ vật của các giao dịch trên. Như vậy, số lượng giao dịch chứa k đồ vật còn lại sẽ ít đi rất nhiều để thực hiện công việc đọc dữ liệu các giao dịch D.
 
-### Nhược điểm của Apriori và cách khắc phục
+### 2.2.2.Nhược điểm của Apriori và cách khắc phục
 Apriori có nhược điểm lớn về hiệu suất, đặc biệt khi phải thực hiện thuật toán với những giao dịch phổ biến chưa nhiều đồ vật, như vậy, việc đọc dữ liệu các giao dịch D sẽ phải diễn ra nhiều lần. Ngoài ra, 
 
 Một vài phương pháp khắc phục:
@@ -86,15 +86,15 @@ Một vài phương pháp khắc phục:
 
 * Phương pháp chọn tập con (sample): ý tưởng của việc chọn tập con (S) của toàn bộ dữ liệu giao dịch D là để sử dụng S làm đại diện cho D, sau đó, việc tim giao dịch phổ biến chỉ cần diễn ra trên S sau đó áp dụng ra cho D. Tuy nhiên, phương pháp này có thể khiến chúng ta bỏ sót một vài giao dịch phổ biến. Để khắc phục được tình huống này thì chúng ta có thể hạ thấp mức support tối thiểu, làm tăng số lượng giao dich phổ biến trong S. 
 
-## Phương pháp Định dạng dữ liệu dọc (Vertical Data Format)
-### Các khải niệm cơ bản
+## 2.3.Phương pháp Định dạng dữ liệu dọc (Vertical Data Format)
+### 2.3.1.Các khải niệm cơ bản
 
 Đối với phương pháp Apriori, thì dữ liệu được sử dụng dưới định dạng nằm ngang, có nghĩa là danh sách các đồ vật trong giao dịch được liệt kê theo thứ tự từ trái sang phải trên cùng một dòng. 
 Đối với phương pháp VDF, dữ liệu được thể hiện dưới dạng: đồ vật-giao dịch, có nghĩa là ứng với từng đồ vật sẽ là giao dịch (id giao dịch) chứa đồ vật đó.
 
 Để tìm được các giao dịch phổ biến cho dữ liệu dạng VDF, chúng ta cần sử dụng thuật toán Eclat (Equivalence Class Transformation). Ví dụ về dạng dữ liệu VDF:
 
-_1 đồ vật trong VDF:_
+_1. Đồ vật trong VDF:_
 
 Đồ vật     |  Giao dịch                                  |
 -----------|--------------------------------------------:|
@@ -104,7 +104,7 @@ I3         |   {T300; T500; T600; T700; T800; T900}
 I4         |   {T200; T400}
 I5         |   {T100; T800}
 
-_2 đồ vật trong VDF:_
+_2. Đồ vật trong VDF:_
 
 Đồ vật     |   Giao dịch                |
 -----------|---------------------------:|
@@ -116,7 +116,7 @@ _2 đồ vật trong VDF:_
 ...        | 
 
 
-_3 đồ vật trong VDF:_
+_3. đồ vật trong VDF:_
 
 Đồ vật      |   Giao dịch   |
 ------------|--------------:|
@@ -130,10 +130,10 @@ Quy trình này sẽ tiếp tục cho đến khi không còn phát sinh danh sá
 Điểm lợi thế của phương pháp này nằm ở chỗ ngoài việc sử dụng mệnh đề của phương pháp Apriori để xây dựng được danh sách k+1 đồ vật từ danh sách k đồ vật được mua sắm thường xuyên (thỏa mãn mức support tối thiểu), thì phương pháp này cũng cho phép hạn chế số lần đọc bảng dữ liệu giao dịch D khi tìm kiếm thêm danh sách k+1 đồ vật từ danh sách k đồ vật. Do tất cả các giao dịch chứa k đồ vật ở bước trước đã chưa toàn bộ thông tin cần thiết để sử dụng cho việc lên danh sách k+1 đồ vật.
 
 
-## Phương pháp đánh giá thuật toán
+## 2.4.Phương pháp đánh giá thuật toán
 Ở trên chúng ta đã được đi qua 2 dạng thuật toán cơ bản là Aprirori và Eclat để phân tích hành vi mua sắm. Cả hai phương pháp này đều sử dụng mô hình support và confidence, như vậy, những giao dịch thỏa mãn mức support/confidence tối thiểu thì có thể được coi là hành vi mua sắm thường xuyên. Tuy nhiên, với mô hình này thì không tránh khỏi việc đưa ra kết luận chưa chính xác về hành vi mua sắm.
 
-### Mô hình tốt không đồng nghĩa với việc có ý nghĩa
+### 2.4.1.Mô hình tốt không đồng nghĩa với việc có ý nghĩa
 Bây giờ chúng ta cùng đi qua ví dụ sau đây: Giả sử có 1000 giao dịch trong dữ liệu giao dịch D, trong đó có 600 giao dịch bao gồm rượu vang, 750 giao dịch bao gồm chai nước lọc và 400 giao dịch bao gồm cả rượu vang và chai nước lọc. Giả sử, bạn muốn tìm mối liên hệ trong dữ liệu và sử dụng mức support/confidence thất nhất lần lượt là: 30% và 60%.
 
 Dựa trên dữ liệu ở trên, ta có thể tìm được liên hệ giữa việc mua sắm rượu vang và chai nước lọc như sau:
@@ -150,7 +150,7 @@ Cụ thể là:
 
 Tuy nhiên, từ số liệu ở trên, bạn cũng có thể thấy được rằng tần suất mua chai nước lọc là 75% ($\frac{750}{1000}$) lớn hơn cả 66%.Rõ ràng chúng ta có thể thấy được rược vang và nước lọc có quan hệ nghịch chiều với nhau dựa vào các con số trên.
 
-### Từ phân tích quan hệ đến phân tích tương quan
+### 2.4.2.Từ phân tích quan hệ đến phân tích tương quan
 Ví dụ trên cho thấy nếu chỉ phụ thuộc vào support và confidence thôi thì chưa đủ, để mô hình có tính thuyết phục cao, chúng ta cần thêm vào mô hình yếu tố tương quan (correlation), như vậy, mô hình của chúng ta sẽ như sau:
 
 $A \Rightarrow B [support, confidence, correlation]$
@@ -174,7 +174,7 @@ Có một vài chỉ số tương quan có thể được sử dụng trong mô 
 
 các chỉ số tương quan như Lift, Chisquare, all/max confidence hay cosine đều gặp phải vấn đề về các giao dịch trống (các giao dịch không phải là giao dịch chứa các đồ vật phổ biến), khiến cho giá trị tương quan không phản ánh đúng mối quan hệ thực sự giữa các đồ vật. Chỉ có chỉ số Kulc và IB là giải quyết được vấn đề này, do vậy được cho là cặp chỉ số tốt để kết hợp với nhau trong việc tìm ra tương quan chính xác giữa các đồ vật trong các giao dịch phổ biến.
 
-# Ứng dụng
+# 3.Ứng dụng
 
 ```r 
 library(pipeR)
