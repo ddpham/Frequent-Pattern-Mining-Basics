@@ -38,9 +38,9 @@ Như vậy, để quy luật ![](/formula_gif/A_Rightarrow_B.gif) sẽ có 2 th�
 
 Trong đó, ![](/formula_gif/A_cup_B.gif) là tần suất xuất hiện hành vi mua sắm của cả A và B trong dữ liệu về giao dịch D ; ![](/formula_gif/A_mid_B.gif) là tần suất xuất hiện của hành vi mua sắm B với điều kiện đã có việc mua sắm A.
 
-* ![](/formula_gif/for3.gif) (*)
+* ![](/formula_gif/for4.gif) (*)
 
-(*): (số lượng giao dịch của cả A và B/Số lượng giao dịch A)
+(*): số lượng giao dịch của cả A và B/Số lượng giao dịch A
 
 Về nguyên tắc, Association rules phải trải qua 2 bước:
 
@@ -67,7 +67,7 @@ T900          |  I1, I2, I3
 
 * Mệnh đề của Apriori: _Tất cả các tập con không rỗng của một giao dịch phổ biến phải là phổ biến_
 
-Có nghĩa là: nếu I là một giao dịch chứa các đồ vật, I không phải là một giao dịch phổ biến thì P(I) < mức support tối thiểu. Như vậy, nếu thêm một đồ vật X vào giao dịch I thì giao dịch J chứa cả I và X không thể là giao dịch phổ biến được, hay $P(I \cup X)$ < mức support tối thiểu.
+Có nghĩa là: nếu I là một giao dịch chứa các đồ vật, I không phải là một giao dịch phổ biến thì P(I) < mức support tối thiểu. Như vậy, nếu thêm một đồ vật X vào giao dịch I thì giao dịch J chứa cả I và X không thể là giao dịch phổ biến được, hay ![](/formula_gif/I_cup_X.gif) < mức support tối thiểu.
 
 Phương pháp Apriori được thực thiện qua 2 bước: 1) xát nhập (join), 2)sàng lọc (prune)
 
