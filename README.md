@@ -69,7 +69,7 @@ T900          |  I1, I2, I3
 
 Có nghĩa là: nếu I là một giao dịch chứa các đồ vật, I không phải là một giao dịch phổ biến thì P(I) < mức support tối thiểu. Như vậy, nếu thêm một đồ vật X vào giao dịch I thì giao dịch J chứa cả I và X không thể là giao dịch phổ biến được, hay ![](/formula_gif/I_cup_X.gif) < mức support tối thiểu.
 
-Phương pháp Apriori được thực thiện qua 2 bước: 1) xát nhập (join), 2)sàng lọc (prune)
+Phương pháp Apriori được thực thiện qua 2 bước: 1) xát nhập (join), 2) sàng lọc (prune)
 
 * Xát nhập: để tìm được các giao dịch chứa k đồ vật, các giao dịch chứa k-1 đồ vật sẽ được sử dụng và xát nhập với nhau để tạo ra các giao dịch chứa k đồ vật. Để tránh bị trùng lặp trong quá trình xát nhập các giao dịch với nhau, các đồ vật trong các giao dịch được sắp xếp theo thứ thự từ A-Z.
 
@@ -140,39 +140,39 @@ Bây giờ chúng ta cùng đi qua ví dụ sau đây: Giả sử có 1000 giao 
 
 Dựa trên dữ liệu ở trên, ta có thể tìm được liên hệ giữa việc mua sắm rượu vang và chai nước lọc như sau:
 
-$Mua (X, "rươu vang") \Rightarrow Mua(X, "chai nước lọc)"$
+![](/formula_gif/for5.gif)
 
 [support = 40%; confidence = 66%]
 
 Cụ thể là:
 
-* $support = \frac{số lượng mua cả rượu vang + chai nước lọc}{tổng số lượng giao dịch} = \frac{400}{1000}$ = 40%
+* ![](/formula_gif/for6.gif)
 
-* $confidence = = \frac{số lượng mua cả rượu vang + chai nước lọc}{số lượng mua rượu vang} = = \frac{400}{600}$ = 66%
+* ![](/formula_gif/for7.gif)
 
-Tuy nhiên, từ số liệu ở trên, bạn cũng có thể thấy được rằng tần suất mua chai nước lọc là 75% ($\frac{750}{1000}$) lớn hơn cả 66%.Rõ ràng chúng ta có thể thấy được rược vang và nước lọc có quan hệ nghịch chiều với nhau dựa vào các con số trên.
+Tuy nhiên, từ số liệu ở trên, bạn cũng có thể thấy được rằng tần suất mua chai nước lọc là 75% (![](/formula_gif/for8.gif)) lớn hơn cả 66%.Rõ ràng chúng ta có thể thấy được rược vang và nước lọc có quan hệ nghịch chiều với nhau dựa vào các con số trên.
 
 ### 2.4.2.Từ phân tích quan hệ đến phân tích tương quan
 Ví dụ trên cho thấy nếu chỉ phụ thuộc vào support và confidence thôi thì chưa đủ, để mô hình có tính thuyết phục cao, chúng ta cần thêm vào mô hình yếu tố tương quan (correlation), như vậy, mô hình của chúng ta sẽ như sau:
 
-$A \Rightarrow B [support, confidence, correlation]$
+![](/formula_gif/for9.gif)
 
 Có một vài chỉ số tương quan có thể được sử dụng trong mô hình như:
 
-* Lift(A,B) = $\frac{P(A \cup B)}{P(A)P(B)}$
-, nếu A và B là độc lập với nhau thì $P(A \cup B) = P(A)P(B)$, Lift = 1, nếu Lift < 1 A, B có tương quan nghịch đảo, và Lift > 1 thì A, B có tương quan cùng chiều.
+* ![](/formula_gif/for10.gif)
+, nếu A và B là độc lập với nhau thì ![](/formula_gif/for11.gif), Lift = 1, nếu Lift < 1 A, B có tương quan nghịch đảo, và Lift > 1 thì A, B có tương quan cùng chiều.
 
-* Chisquare ($\chi^{2}$ ) = $\sum \frac{(observed - expected)^2}{expected}$
+* ![](/formula_gif/for12.gif)
 
-* all confidence: all_conf(A,B) = $\frac{sup(A \cup B)}{max[sup(A), sup(B)]} = min[P(A|B), P(B|A)]$
+* all confidence: ![](/formula_gif/for13.gif)
 
-* max confidence: max_conf(A,B) = max[P(A|B), P(B|A)]
+* max confidence: ![](/formula_gif/for14.gif)
 
-* Kulczynski: kulc(A,B) = $\frac{1}{2}(P(A|B) + P(B|A))$
+* Kulczynski: ![](/formula_gif/for15.gif)
 
-* Cosine (harmonised lift): cosine(A,B) = $\frac{P(A \cup B)}{\sqrt{P(A) \times P(B)}} = \frac{sup(A \cup B)}{\sqrt{sup(A) \times sup(B)}} = \sqrt{P(A|B) \times P(B|A)}$
+* Cosine (harmonised lift): ![](/formula_gif/for16.gif)
 
-* Imbalance ratio: IB(A,B) = $\frac{|sup(A) - sup(B)|}{sup(A) + sup(B) - sup(A \cup B)}$
+* Imbalance ratio: ![](/formula_gif/for17.gif)
 
 các chỉ số tương quan như Lift, Chisquare, all/max confidence hay cosine đều gặp phải vấn đề về các giao dịch trống (các giao dịch không phải là giao dịch chứa các đồ vật phổ biến), khiến cho giá trị tương quan không phản ánh đúng mối quan hệ thực sự giữa các đồ vật. Chỉ có chỉ số Kulc và IB là giải quyết được vấn đề này, do vậy được cho là cặp chỉ số tốt để kết hợp với nhau trong việc tìm ra tương quan chính xác giữa các đồ vật trong các giao dịch phổ biến.
 
