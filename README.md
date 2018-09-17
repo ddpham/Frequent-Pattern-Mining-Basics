@@ -171,7 +171,7 @@ Có một vài chỉ số tương quan có thể được sử dụng trong mô 
 các chỉ số tương quan như Lift, Chisquare, all/max confidence hay cosine đều gặp phải vấn đề về các giao dịch trống (các giao dịch không phải là giao dịch chứa các đồ vật phổ biến), khiến cho giá trị tương quan không phản ánh đúng mối quan hệ thực sự giữa các đồ vật. Chỉ có chỉ số Kulc và IB là giải quyết được vấn đề này, do vậy được cho là cặp chỉ số tốt để kết hợp với nhau trong việc tìm ra tương quan chính xác giữa các đồ vật trong các giao dịch phổ biến.
 
 #### Reference:
-Jiawei Han, Micheline Kamber, Jian Pei, (2012) “Mining Frequent Patterns, Associations, and Correlations: Basic Concepts and Methods”; “ Advanced Pattern Mining”, in Jiawei Han, Micheline Kamber, Jian Pei (3rd ed.), *Data Mining Concepts and Techniques*, 225 Wyman Street, Waltham, MA 02451, USA: Elsevier Inc.
+Jiawei Han, Micheline Kamber, Jian Pei, (2012) “Mining Frequent Patterns, Associations, and Correlations: Basic Concepts and Methods”; “ Advanced Pattern Mining”, in Jiawei Han, Micheline Kamber, Jian Pei (3rd ed.), *Data Mining Concepts and Techniques*, 225 Wyman Street, Waltham, MA 02451, USA: Morgan Kaufmann Publishers.
 
 # 3.Ứng dụng
 
