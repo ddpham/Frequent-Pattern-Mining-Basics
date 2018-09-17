@@ -26,19 +26,21 @@ Bia lon => đồ nhậu[support = 2%, confidence = 80%]
 - Mức Confidence tối thiểu (minimum confidence threshold): mức thấp nhất của cơ hội mua sắm để thỏa mãn được sự quan tâm của người phân tích
 
 ### 2.1.3.Các khái niệm khác
-Gọi I = {I1, I2,...,Im} là tập các đồ vật; D là dữ liệu giao dịch trong đó từng giao dịch T là giao dịch có các đồ vật thuộc tập I ($T \subseteq I$). A là tập các đồ vật, và $A \subseteq T$, ta có:
+Gọi I = {I1, I2,...,Im} là tập các đồ vật; D là dữ liệu giao dịch trong đó từng giao dịch T là giao dịch có các đồ vật thuộc tập I (![](/formula_gif/T_subset_I.gif)). A là tập các đồ vật, và ![](/formula_gif/A_subset_I.gif), ta có:
 
-* $A \Rightarrow B$ khi mà $A \subseteq I$ và $B \subseteq I$, $A \neq \phi$, $B \neq \phi$, $A \cap B = \phi$
+* ![](/formula_gif/for1.gif) 
 
-Như vậy, để quy luật $A \Rightarrow B$ sẽ có 2 thành phần:
+Như vậy, để quy luật ![](/formula_gif/A_Rightarrow_B.gif) sẽ có 2 thành phần:
 
-* support($A \Rightarrow B$) = $P(A \cup B)$
+* ![](/formula_gif/for2.gif)
 
-* confidence($A \Rightarrow B$) = $P(A|B)$
+* ![](/formula_gif/for3.gif)
 
-Trong đó, $P(A \cup B)$ là tần suất xuất hiện hành vi mua sắm của cả A và B ($A \cup B$) trong dữ liệu về giao dịch D ; $P(A|B)$ là tần suất xuất hiện của hành vi mua sắm B với điều kiện đã có việc mua sắm A.
+Trong đó, ![](/formula_gif/for4.gif) là tần suất xuất hiện hành vi mua sắm của cả A và B (![](/formula_gif/for4.gif)) trong dữ liệu về giao dịch D ; ![](/formula_gif/for5.gif) là tần suất xuất hiện của hành vi mua sắm B với điều kiện đã có việc mua sắm A.
 
-* confidence($A \Rightarrow B$) = $P(A|B)$ = $\frac{support(A \cup B)}{support(A)}$ = $\frac{số lượng giao dịch cả A và B}{số lượng giao dịch A}$
+* confidence(![](/formula_gif/for1.gif)) = ![](/formula_gif/for5.gif) = ![](/formula_gif/for6.gif) = ![](/formula_gif/for7.gif)
+
+(*): (số lượng giao dịch của cả A và B/Số lượng giao dịch A)
 
 Về nguyên tắc, Association rules phải trải qua 2 bước:
 
