@@ -36,9 +36,9 @@ Như vậy, để quy luật ![](/formula_gif/A_Rightarrow_B.gif) sẽ có 2 th�
 
 * ![](/formula_gif/for3.gif)
 
-Trong đó, ![](/formula_gif/for4.gif) là tần suất xuất hiện hành vi mua sắm của cả A và B (![](/formula_gif/for4.gif)) trong dữ liệu về giao dịch D ; ![](/formula_gif/for5.gif) là tần suất xuất hiện của hành vi mua sắm B với điều kiện đã có việc mua sắm A.
+Trong đó, ![](/formula_gif/A_cup_B.gif) là tần suất xuất hiện hành vi mua sắm của cả A và B trong dữ liệu về giao dịch D ; ![](/formula_gif/A_mid_B.gif) là tần suất xuất hiện của hành vi mua sắm B với điều kiện đã có việc mua sắm A.
 
-* confidence(![](/formula_gif/for1.gif)) = ![](/formula_gif/for5.gif) = ![](/formula_gif/for6.gif) = ![](/formula_gif/for7.gif)
+* ![](/formula_gif/for3.gif) (*)
 
 (*): (số lượng giao dịch của cả A và B/Số lượng giao dịch A)
 
