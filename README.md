@@ -150,7 +150,7 @@ Cụ thể là:
 
 * ![](/formula_gif/for7.gif)
 
-Tuy nhiên, từ số liệu ở trên, bạn cũng có thể thấy được rằng tần suất mua chai nước lọc là 75% (![](/formula_gif/for8.gif)) lớn hơn cả 66%.Rõ ràng chúng ta có thể thấy được rược vang và nước lọc có quan hệ nghịch chiều với nhau dựa vào các con số trên.
+Tuy nhiên, từ số liệu ở trên, bạn cũng có thể thấy được rằng tần suất mua chai nước lọc là 75% ![](/formula_gif/for8.gif) lớn hơn cả 66%.Rõ ràng chúng ta có thể thấy được rược vang và nước lọc có quan hệ nghịch chiều với nhau dựa vào các con số trên.
 
 ### 2.4.2.Từ phân tích quan hệ đến phân tích tương quan
 Ví dụ trên cho thấy nếu chỉ phụ thuộc vào support và confidence thôi thì chưa đủ, để mô hình có tính thuyết phục cao, chúng ta cần thêm vào mô hình yếu tố tương quan (correlation), như vậy, mô hình của chúng ta sẽ như sau:
